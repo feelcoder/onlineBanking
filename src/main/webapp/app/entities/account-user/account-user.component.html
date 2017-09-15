@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span jhiTranslate="onlineBankingApp.accountUser.home.title">Account Users</span>
+        <button class="btn btn-primary float-right jh-create-entity create-account-user" [routerLink]="['/', { outlets: { popup: ['account-user-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="onlineBankingApp.accountUser.home.createLabel">
+            Create new Account User
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="accountUsers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="onlineBankingApp.accountUser.accountType">Account Type</span></th>
+            <th><span jhiTranslate="onlineBankingApp.accountUser.accountNo">Account No</span></th>
+            <th><span jhiTranslate="onlineBankingApp.accountUser.balance">Balance</span></th>
+            <th><span jhiTranslate="onlineBankingApp.accountUser.limit">Limit</span></th>
+            <th><span jhiTranslate="onlineBankingApp.accountUser.isActivated">Is Activated</span></th>
+            <th><span jhiTranslate="onlineBankingApp.accountUser.createdDate">Created Date</span></th>
+            <th><span jhiTranslate="onlineBankingApp.accountUser.user">User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let accountUser of accountUsers ;trackBy: trackId">
+                <td><a [routerLink]="['../account-user', accountUser.id ]">{{accountUser.id}}</a></td>
+                <td>{{accountUser.accountType}}</td>
+                <td>{{accountUser.accountNo}}</td>
+                <td>{{accountUser.balance}}</td>
+                <td>{{accountUser.limit}}</td>
+                <td>{{accountUser.isActivated}}</td>
+                <td>{{accountUser.createdDate | date:'medium'}}</td>
+                <td>
+                    {{accountUser.userLogin}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../account-user', accountUser.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'account-user/'+ accountUser.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'account-user/'+ accountUser.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

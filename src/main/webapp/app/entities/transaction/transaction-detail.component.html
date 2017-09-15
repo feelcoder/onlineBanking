@@ -1,0 +1,49 @@
+
+<div *ngIf="transaction">
+    <h2><span jhiTranslate="onlineBankingApp.transaction.detail.title">Transaction</span> {{transaction.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="onlineBankingApp.transaction.type">Type</span></dt>
+        <dd>
+            <span>{{transaction.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.transaction.description">Description</span></dt>
+        <dd>
+            <span>{{transaction.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.transaction.date">Date</span></dt>
+        <dd>
+            <span>{{transaction.date}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.transaction.amount">Amount</span></dt>
+        <dd>
+            <span>{{transaction.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.transaction.senderAccount">Sender Account</span></dt>
+        <dd>
+            <div *ngIf="transaction.senderAccountId">
+                <a [routerLink]="['/account-user', transaction.senderAccountId]">{{transaction.senderAccountId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.transaction.receiverAccount">Receiver Account</span></dt>
+        <dd>
+            <div *ngIf="transaction.receiverAccountId">
+                <a [routerLink]="['/account-user', transaction.receiverAccountId]">{{transaction.receiverAccountId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'transaction/'+ transaction.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

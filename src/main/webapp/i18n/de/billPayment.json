@@ -1,0 +1,26 @@
+{
+    "onlineBankingApp": {
+        "billPayment" : {
+            "home": {
+                "title": "Bill Payments",
+                "createLabel": "Bill Payment erstellen",
+                "createOrEditLabel": "Bill Payment erstellen oder bearbeiten"
+            },
+            "created": "Bill Payment erstellt mit ID {{ param }}",
+            "updated": "Bill Payment aktualisiert mit ID {{ param }}",
+            "deleted": "Bill Payment gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Bill Payment {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Bill Payment"
+            },
+            "scheduledDate": "Scheduled Date",
+            "frequencyMode": "Frequency Mode",
+            "paymentComplete": "Payment Complete",
+            "amount": "Amount",
+            "vendor": "Vendor",
+            "accountUser": "Account User"
+        }
+    }
+}

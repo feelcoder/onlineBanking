@@ -1,0 +1,49 @@
+
+<div *ngIf="billPayment">
+    <h2><span jhiTranslate="onlineBankingApp.billPayment.detail.title">Bill Payment</span> {{billPayment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="onlineBankingApp.billPayment.scheduledDate">Scheduled Date</span></dt>
+        <dd>
+            <span>{{billPayment.scheduledDate}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.billPayment.frequencyMode">Frequency Mode</span></dt>
+        <dd>
+            <span>{{billPayment.frequencyMode}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.billPayment.paymentComplete">Payment Complete</span></dt>
+        <dd>
+            <span>{{billPayment.paymentComplete}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.billPayment.amount">Amount</span></dt>
+        <dd>
+            <span>{{billPayment.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.billPayment.vendor">Vendor</span></dt>
+        <dd>
+            <div *ngIf="billPayment.vendorId">
+                <a [routerLink]="['/vendor', billPayment.vendorId]">{{billPayment.vendorId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.billPayment.accountUser">Account User</span></dt>
+        <dd>
+            <div *ngIf="billPayment.accountUserId">
+                <a [routerLink]="['/account-user', billPayment.accountUserId]">{{billPayment.accountUserId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bill-payment/'+ billPayment.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

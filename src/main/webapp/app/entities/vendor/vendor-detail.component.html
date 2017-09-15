@@ -1,0 +1,45 @@
+
+<div *ngIf="vendor">
+    <h2><span jhiTranslate="onlineBankingApp.vendor.detail.title">Vendor</span> {{vendor.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="onlineBankingApp.vendor.firstName">First Name</span></dt>
+        <dd>
+            <span>{{vendor.firstName}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.vendor.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{vendor.lastName}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.vendor.email">Email</span></dt>
+        <dd>
+            <span>{{vendor.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.vendor.companyName">Company Name</span></dt>
+        <dd>
+            <span>{{vendor.companyName}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.vendor.isRegistered">Is Registered</span></dt>
+        <dd>
+            <span>{{vendor.isRegistered}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.vendor.expiringDate">Expiring Date</span></dt>
+        <dd>
+            <span>{{vendor.expiringDate}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'vendor/'+ vendor.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

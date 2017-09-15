@@ -1,0 +1,26 @@
+{
+    "onlineBankingApp": {
+        "vendor" : {
+            "home": {
+                "title": "Vendors",
+                "createLabel": "Vendor erstellen",
+                "createOrEditLabel": "Vendor erstellen oder bearbeiten"
+            },
+            "created": "Vendor erstellt mit ID {{ param }}",
+            "updated": "Vendor aktualisiert mit ID {{ param }}",
+            "deleted": "Vendor gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Vendor {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Vendor"
+            },
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email",
+            "companyName": "Company Name",
+            "isRegistered": "Is Registered",
+            "expiringDate": "Expiring Date"
+        }
+    }
+}

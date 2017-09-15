@@ -1,0 +1,26 @@
+{
+    "onlineBankingApp": {
+        "transaction" : {
+            "home": {
+                "title": "Transactions",
+                "createLabel": "Criar um(a) novo(a) Transaction",
+                "createOrEditLabel": "Criar ou editar um(a) Transaction"
+            },
+            "created": "A new Transaction is created with identifier {{ param }}",
+            "updated": "A Transaction is updated with identifier {{ param }}",
+            "deleted": "A Transaction is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Tem a certeza que pretende eliminar o(a) Transaction {{ id }}?"
+            },
+            "detail": {
+                "title": "Transaction"
+            },
+            "type": "Type",
+            "description": "Description",
+            "date": "Date",
+            "amount": "Amount",
+            "senderAccount": "Sender Account",
+            "receiverAccount": "Receiver Account"
+        }
+    }
+}

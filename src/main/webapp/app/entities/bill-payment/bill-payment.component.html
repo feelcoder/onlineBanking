@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span jhiTranslate="onlineBankingApp.billPayment.home.title">Bill Payments</span>
+        <button class="btn btn-primary float-right jh-create-entity create-bill-payment" [routerLink]="['/', { outlets: { popup: ['bill-payment-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="onlineBankingApp.billPayment.home.createLabel">
+            Create new Bill Payment
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="billPayments">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="scheduledDate"><span jhiTranslate="onlineBankingApp.billPayment.scheduledDate">Scheduled Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="frequencyMode"><span jhiTranslate="onlineBankingApp.billPayment.frequencyMode">Frequency Mode</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="paymentComplete"><span jhiTranslate="onlineBankingApp.billPayment.paymentComplete">Payment Complete</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="amount"><span jhiTranslate="onlineBankingApp.billPayment.amount">Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="vendorId"><span jhiTranslate="onlineBankingApp.billPayment.vendor">Vendor</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="accountUserId"><span jhiTranslate="onlineBankingApp.billPayment.accountUser">Account User</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let billPayment of billPayments ;trackBy: trackId">
+                <td><a [routerLink]="['../bill-payment', billPayment.id ]">{{billPayment.id}}</a></td>
+                <td>{{billPayment.scheduledDate}}</td>
+                <td>{{billPayment.frequencyMode}}</td>
+                <td>{{billPayment.paymentComplete}}</td>
+                <td>{{billPayment.amount}}</td>
+                <td>
+                    <div *ngIf="billPayment.vendorId">
+                        <a [routerLink]="['../vendor', billPayment.vendorId  ]" >{{billPayment.vendorId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="billPayment.accountUserId">
+                        <a [routerLink]="['../account-user', billPayment.accountUserId  ]" >{{billPayment.accountUserId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../bill-payment', billPayment.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bill-payment/'+ billPayment.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bill-payment/'+ billPayment.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="billPayments && billPayments.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

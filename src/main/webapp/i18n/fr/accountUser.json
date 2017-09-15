@@ -1,0 +1,27 @@
+{
+    "onlineBankingApp": {
+        "accountUser" : {
+            "home": {
+                "title": "AccountUsers",
+                "createLabel": "Créer un nouveau Account User",
+                "createOrEditLabel": "Créer ou éditer un Account User"
+            },
+            "created": "Un nouveau Account User a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Account User avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Account User avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Account User {{ id }} ?"
+            },
+            "detail": {
+                "title": "Account User"
+            },
+            "accountType": "Account Type",
+            "accountNo": "Account No",
+            "balance": "Balance",
+            "limit": "Limit",
+            "isActivated": "Is Activated",
+            "createdDate": "Created Date",
+            "user": "User"
+        }
+    }
+}

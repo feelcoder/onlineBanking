@@ -40,6 +40,13 @@ public class CacheConfiguration {
             cm.createCache(com.kiffcode.banking.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.kiffcode.banking.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.kiffcode.banking.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.kiffcode.banking.domain.AccountUser.class.getName(), jcacheConfiguration);
+            cm.createCache(com.kiffcode.banking.domain.Transaction.class.getName(), jcacheConfiguration);
+            cm.createCache(com.kiffcode.banking.domain.Transaction.class.getName() + ".senderAccounts", jcacheConfiguration);
+            cm.createCache(com.kiffcode.banking.domain.Transaction.class.getName() + ".receiverAccounts", jcacheConfiguration);
+            cm.createCache(com.kiffcode.banking.domain.Vendor.class.getName(), jcacheConfiguration);
+            cm.createCache(com.kiffcode.banking.domain.BillPayment.class.getName(), jcacheConfiguration);
+            cm.createCache(com.kiffcode.banking.domain.BillPayment.class.getName() + ".accountUsers", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

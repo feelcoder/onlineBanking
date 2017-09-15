@@ -1,0 +1,49 @@
+
+<div *ngIf="accountUser">
+    <h2><span jhiTranslate="onlineBankingApp.accountUser.detail.title">Account User</span> {{accountUser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="onlineBankingApp.accountUser.accountType">Account Type</span></dt>
+        <dd>
+            <span>{{accountUser.accountType}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.accountUser.accountNo">Account No</span></dt>
+        <dd>
+            <span>{{accountUser.accountNo}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.accountUser.balance">Balance</span></dt>
+        <dd>
+            <span>{{accountUser.balance}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.accountUser.limit">Limit</span></dt>
+        <dd>
+            <span>{{accountUser.limit}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.accountUser.isActivated">Is Activated</span></dt>
+        <dd>
+            <span>{{accountUser.isActivated}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.accountUser.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{accountUser.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="onlineBankingApp.accountUser.user">User</span></dt>
+        <dd>
+            {{accountUser.userLogin}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'account-user/'+ accountUser.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

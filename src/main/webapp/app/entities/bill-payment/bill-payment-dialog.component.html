@@ -1,0 +1,87 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBillPaymentLabel" jhiTranslate="onlineBankingApp.billPayment.home.createOrEditLabel">Create or edit a Bill Payment</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!billPayment.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="billPayment.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="onlineBankingApp.billPayment.scheduledDate" for="field_scheduledDate">Scheduled Date</label>
+            <input type="text" class="form-control" name="scheduledDate" id="field_scheduledDate"
+                [(ngModel)]="billPayment.scheduledDate"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="onlineBankingApp.billPayment.frequencyMode" for="field_frequencyMode">Frequency Mode</label>
+            <input type="text" class="form-control" name="frequencyMode" id="field_frequencyMode"
+                [(ngModel)]="billPayment.frequencyMode"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="onlineBankingApp.billPayment.paymentComplete" for="field_paymentComplete">Payment Complete</label>
+            <input type="checkbox" class="form-control" name="paymentComplete" id="field_paymentComplete"
+                [(ngModel)]="billPayment.paymentComplete"  />
+            <div [hidden]="!(editForm.controls.paymentComplete?.dirty && editForm.controls.paymentComplete?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.paymentComplete?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="onlineBankingApp.billPayment.amount" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                [(ngModel)]="billPayment.amount" required />
+            <div [hidden]="!(editForm.controls.amount?.dirty && editForm.controls.amount?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.amount?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.amount?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="onlineBankingApp.billPayment.vendor" for="field_vendor">Vendor</label>
+            <select class="form-control" id="field_vendor" name="vendor" [(ngModel)]="billPayment.vendorId"  required>
+                <option *ngIf="!editForm.value.vendor" [ngValue]="null" selected></option>
+                <option [ngValue]="vendorOption.id" *ngFor="let vendorOption of vendors; trackBy: trackVendorById">{{vendorOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.vendor?.dirty && editForm.controls.vendor?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.vendor?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="onlineBankingApp.billPayment.accountUser" for="field_accountUser">Account User</label>
+            <select class="form-control" id="field_accountUser" name="accountUser" [(ngModel)]="billPayment.accountUserId"  required>
+                <option *ngIf="!editForm.value.accountUser" [ngValue]="null" selected></option>
+                <option [ngValue]="accountUserOption.id" *ngFor="let accountUserOption of accountusers; trackBy: trackAccountUserById">{{accountUserOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.accountUser?.dirty && editForm.controls.accountUser?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.accountUser?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
